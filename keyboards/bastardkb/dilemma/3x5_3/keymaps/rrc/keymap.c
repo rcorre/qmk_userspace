@@ -46,7 +46,6 @@ enum dilemma_keymap_layers {
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
-
 #define LYR_BSE 0
 #define LYR_SYM 1
 #define LYR_NAV 2
@@ -54,33 +53,34 @@ enum dilemma_keymap_layers {
 
 // clang-format off
 /** \brief QWERTY layout (3 rows, 10 columns). */
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LYR_BSE] = LAYOUT_split_3x5_3(
-         KC_Q,          KC_W,          KC_E,          KC_R,          KC_T,                           KC_Y,                  KC_U,                 KC_I,          KC_O,          KC_P,
-         LALT_T(KC_A),  RGUI_T(KC_S),  LCTL_T(KC_D),  LSFT_T(KC_F),  KC_G,                           KC_H,                  RSFT_T(KC_J),         RCTL_T(KC_K),  RGUI_T(KC_L),  RALT_T(KC_SCLN),
-         KC_Z,          KC_X,          KC_C,          KC_V,          KC_B,                           KC_N,                  KC_M,                 KC_COMM,       KC_DOT,        KC_SLSH,
-                                       KC_ESC,        KC_SPC,        LT(LYR_NAV, KC_TAB),            LT(LYR_NUM, KC_BSPC),  LT(LYR_SYM, KC_ENT),  KC_ESC
+        KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,                        KC_Y,                 KC_U,                KC_I,         KC_O,         KC_P,
+        LALT_T(KC_A), RGUI_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,                        KC_H,                 RSFT_T(KC_J),        RCTL_T(KC_K), RGUI_T(KC_L), RALT_T(KC_SCLN),
+        KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,                        KC_N,                 KC_M,                KC_COMM,      KC_DOT,       KC_SLSH,
+                                    KC_ESC,       KC_SPC,       LT(LYR_NAV, KC_TAB),         LT(LYR_NUM, KC_BSPC), LT(LYR_SYM, KC_ENT), KC_ESC
     ),
 
     [LYR_SYM] = LAYOUT_split_3x5_3(
-         _______,  _______,    KC_LCBR,  KC_RCBR,  _______,            _______,  _______,  KC_DQT,    KC_GRV,   KC_PIPE,
-         KC_HASH,  KC_DOLLAR,  KC_LPRN,  KC_RPRN,  KC_EQL,             KC_TILD,  KC_UNDS,  KC_MINUS,  KC_ASTR,  KC_AMPR,
-         KC_PERC,  KC_CIRC,    KC_LBRC,  KC_RBRC,  KC_PLUS,            KC_AT,    KC_EXLM,  KC_GRV,    KC_QUOT,  KC_BSLS,
-                               _______,  CW_TOGG,  _______,            _______,  _______,  _______
+        _______, _______,   KC_LCBR, KC_RCBR, _______,         _______, _______, KC_DQT,   KC_GRV,  KC_PIPE,
+        KC_HASH, KC_DOLLAR, KC_LPRN, KC_RPRN, KC_EQL,          KC_TILD, KC_UNDS, KC_MINUS, KC_ASTR, KC_AMPR,
+        KC_PERC, KC_CIRC,   KC_LBRC, KC_RBRC, KC_PLUS,         KC_AT,   KC_EXLM, KC_GRV,   KC_QUOT, KC_BSLS,
+                            _______, _______, CW_TOGG,         _______, _______, _______
     ),
 
     [LYR_NAV] = LAYOUT_split_3x5_3(
-         KC_WH_D,  _______,  KC_WH_U,  _______,     _______,               _______,     _______,     _______,  _______,  _______,
-         _______,  _______,  _______,  KC_MS_BTN1,  KC_MS_BTN1,            KC_LEFT,     KC_DOWN,     KC_UP,    KC_RGHT,  _______,
-         _______,  _______,  _______,  _______,     _______,               _______,     _______,     _______,  _______,  _______,
-                             _______,  _______,     _______,               KC_MS_BTN1,  KC_MS_BTN2,  _______
+        KC_WH_D, _______, KC_WH_U, _______,    _______,            _______,    _______,    _______, _______, _______,
+        _______, _______, _______, KC_MS_BTN1, KC_MS_BTN1,         KC_LEFT,    KC_DOWN,    KC_UP,   KC_RGHT, _______,
+        _______, _______, _______, _______,    _______,            _______,    _______,    _______, _______, _______,
+                          _______, _______,    _______,            KC_MS_BTN1, KC_MS_BTN2, _______
     ),
 
     [LYR_NUM] = LAYOUT_split_3x5_3(
-         _______,  _______,  _______,  _______,  _______,            _______,  _______,  _______,  _______,  _______,
-         KC_1,     KC_2,     KC_3,     KC_4,     KC_5,               KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
-         _______,  _______,  _______,  _______,  _______,            _______,  _______,  _______,  _______,  _______,
-                             _______,  _______,  _______,            _______,  _______,  _______
+        _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______,
+        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
+        _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______,
+                          _______, _______, _______,         _______, _______, _______
     )
 
 

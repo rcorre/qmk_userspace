@@ -24,4 +24,8 @@
 
 #define ENCODER_RESOLUTION 1
 
+// Home-row mods
+// #define QUICK_TAP_TERM 400
+#define PERMISSIVE_HOLD
+
 #define Dilemma_MINIMUM_DEFAULT_DPI 0
