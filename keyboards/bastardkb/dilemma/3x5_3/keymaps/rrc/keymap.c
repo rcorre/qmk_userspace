@@ -51,9 +51,6 @@ enum dilemma_keymap_layers {
 #define LYR_NAV 2
 #define LYR_NUM 3
 
-// clang-format off
-/** \brief QWERTY layout (3 rows, 10 columns). */
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LYR_BSE] = LAYOUT_split_3x5_3(
         KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,                        KC_Y,                 KC_U,                KC_I,         KC_O,         KC_P,
@@ -70,10 +67,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [LYR_NAV] = LAYOUT_split_3x5_3(
-        KC_WH_D, _______, KC_WH_U, _______,    _______,            _______,    _______,    _______, _______, _______,
-        _______, _______, _______, KC_MS_BTN1, KC_MS_BTN1,         KC_LEFT,    KC_DOWN,    KC_UP,   KC_RGHT, _______,
-        _______, _______, _______, _______,    _______,            _______,    _______,    _______, _______, _______,
-                          _______, _______,    _______,            KC_MS_BTN1, KC_MS_BTN2, _______
+        KC_WH_D, _______, KC_WH_U,    LSFT(KC_MS_BTN1), LSFT(KC_MS_BTN2),         _______, _______, _______, _______, _______,
+        _______, _______, KC_MS_BTN2, KC_MS_BTN1,       KC_MS_BTN2,               KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
+        _______, _______, _______,    _______,          _______,                  KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
+                          _______,    _______,          _______,                  _______, _______, _______
     ),
 
     [LYR_NUM] = LAYOUT_split_3x5_3(
@@ -85,7 +82,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 };
-// clang-format on
 
 #ifdef POINTING_DEVICE_ENABLE
 #    ifdef DILEMMA_AUTO_SNIPING_ON_LAYER
@@ -126,3 +122,4 @@ bool caps_word_press_user(uint16_t keycode) {
             return false; // Deactivate Caps Word.
     }
 }
+
