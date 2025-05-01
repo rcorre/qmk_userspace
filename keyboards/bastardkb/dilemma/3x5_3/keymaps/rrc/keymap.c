@@ -46,17 +46,21 @@ enum dilemma_keymap_layers {
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
-#define LYR_BSE 0
-#define LYR_SYM 1
-#define LYR_NAV 2
-#define LYR_NUM 3
+enum {
+    LYR_BSE,
+    LYR_SYM,
+    LYR_NAV,
+    LYR_NUM,
+    LYR_FUN,
+};
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+const uint16_t
+PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LYR_BSE] = LAYOUT_split_3x5_3(
-        KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,                        KC_Y,                 KC_U,                KC_I,         KC_O,         KC_P,
-        LALT_T(KC_A), RGUI_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,                        KC_H,                 RSFT_T(KC_J),        RCTL_T(KC_K), RGUI_T(KC_L), RALT_T(KC_SCLN),
-        KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,                        KC_N,                 KC_M,                KC_COMM,      KC_DOT,       KC_SLSH,
-                                    KC_ESC,       KC_SPC,       LT(LYR_NAV, KC_TAB),         LT(LYR_NUM, KC_BSPC), LT(LYR_SYM, KC_ENT), KC_ESC
+        KC_Q,         KC_W,         KC_E,                KC_R,         KC_T,                        KC_Y,                 KC_U,                KC_I,         KC_O,         KC_P,
+        LALT_T(KC_A), RGUI_T(KC_S), LCTL_T(KC_D),        LSFT_T(KC_F), KC_G,                        KC_H,                 RSFT_T(KC_J),        RCTL_T(KC_K), RGUI_T(KC_L), RALT_T(KC_SCLN),
+        KC_Z,         KC_X,         KC_C,                KC_V,         KC_B,                        KC_N,                 KC_M,                KC_COMM,      KC_DOT,       KC_SLSH,
+                                    LT(LYR_FUN, KC_ESC), KC_SPC,       LT(LYR_NAV, KC_TAB),         LT(LYR_NUM, KC_BSPC), LT(LYR_SYM, KC_ENT), KC_ESC
     ),
 
     [LYR_SYM] = LAYOUT_split_3x5_3(
@@ -78,9 +82,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
         _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______,
                           _______, _______, _______,         _______, _______, _______
+    ),
+
+    [LYR_FUN] = LAYOUT_split_3x5_3(
+        KC_F1,  KC_F2,  KC_F3,   KC_F4,   KC_F5,           _______, _______, _______, _______, _______,
+        KC_F6,  KC_F7,  KC_F8,   KC_F9,   KC_F10,          _______, _______, _______, _______, _______,
+        KC_F11, KC_F12, _______, _______, _______,         _______, _______, _______, _______, _______,
+                        _______, _______, _______,         _______, _______, _______
     )
-
-
 };
 
 #ifdef POINTING_DEVICE_ENABLE
@@ -93,12 +102,15 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #endif     // POINTING_DEVICE_ENABLE
 
 #ifdef ENCODER_MAP_ENABLE
+// clang-format off
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [LYR_BSE] = {ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_WH_U, KC_WH_D)},
-    [LYR_SYM] = {ENCODER_CCW_CW(KC_DOWN, KC_UP), ENCODER_CCW_CW(KC_LEFT, KC_RGHT)},
-    [LYR_NAV] = {ENCODER_CCW_CW(KC_PGDN, KC_PGUP), ENCODER_CCW_CW(KC_PGUP, KC_PGDN)},
-    [LYR_NUM] = {ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_WH_D, KC_WH_U)},
+    [LYR_BSE] = {ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(KC_WH_U, KC_WH_D)},
+    [LYR_SYM] = {ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______)},
+    [LYR_NAV] = {ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [LYR_NUM] = {ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(_______, _______)},
+    [LYR_FUN] = {ENCODER_CCW_CW(_______, _______), ENCODER_CCW_CW(KC_BRID, KC_BRIU)},
 };
+// clang-format on
 #endif // ENCODER_MAP_ENABLE
 
 // Override caps word to not shift - to _

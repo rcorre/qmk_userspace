@@ -22,7 +22,7 @@
 #define SPLIT_LAYER_STATE_ENABLE
 #define SPLIT_LED_STATE_ENABLE
 
-#define ENCODER_RESOLUTION 1
+#define ENCODER_RESOLUTION 2
 
 // Home-row mods
 // #define QUICK_TAP_TERM 400
